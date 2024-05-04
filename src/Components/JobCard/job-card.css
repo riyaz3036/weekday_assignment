@@ -1,0 +1,38 @@
+.card__main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 360px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px;
+    border-radius: 20px;
+    padding: 5px;
+
+}
+
+.card__main span{
+    background-color: red;
+    height: 8px;
+    width: 100%;
+}
+
+
+/* Card top styling starts here */
+.card__top{
+    background-color: aquamarine;
+    display: flex;
+    padding: 10px;
+}
+
+.card__top__cont{
+    padding: 4px 6px;
+    border: 1px solid rgb(230, 230, 230);
+    box-shadow: rgba(6, 6, 6, 0.05) 0px 2px 6px 0px;
+    border-radius: 10px;
+}
+
+.card__top__cont p{
+    margin: 0;
+    color: rgba(0, 0, 0, 0.87);
+    line-height: 1.5;
+    font-size: 9px;
+}
