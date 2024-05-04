@@ -17,7 +17,12 @@ const JobCard = () => {
 
             <div className="card__middle"></div>
 
-            <div className="card__bottom"></div>
+            <div className="card__bottom">
+                <div className="card__bottom__cont">
+                    <button>⚡ Easy Apply</button>
+                </div>
+
+            </div>
 
         </div>
         

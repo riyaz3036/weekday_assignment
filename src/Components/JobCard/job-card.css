@@ -36,3 +36,22 @@
     line-height: 1.5;
     font-size: 9px;
 }
+
+/* Card Bottom Styling */
+.card__bottom{
+    padding: 0 15px;
+}
+
+.card__bottom__cont{
+    padding: 0.5rem 0;
+}
+
+.card__bottom__cont button{
+    background-color: rgb(85, 239, 196);
+    width: 100%;
+    padding: 8px 18px;
+    font-size: 20px ;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
