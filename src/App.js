@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './App.css';
 import JobCard from './Components/JobCard/JobCard';
 
@@ -103,13 +103,15 @@ const exp_list = [1,2,3,4,5,6,7,8,9,10];
 
 
 function App() {
-
+  
+  const [toggleDropdown,setToggleDropdown] = useState(0);
 
   return (
     <div className="App">
 
         <div className="filters">
 
+            {/* Filter for role */}
             <div className="filter__element">
                 <p className="filter__title">Roles</p>
                 <div className="element__top">
@@ -122,12 +124,14 @@ function App() {
                     </div>
 
                     <div className="element__top__right">
-                        <div className="cross__all"><i class="ri-close-line"></i></div>
+                        <div className="cross__all" onClick={()=>{setToggleDropdown(0)}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
                         <span className="partition"></span>
-                        <div className="dropdown__arrow"><i class="ri-arrow-drop-down-line"></i></div>
+                        <div className="dropdown__arrow" onClick={()=>{setToggleDropdown(!toggleDropdown)}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
                     </div>                 
                 </div>
 
+                {
+                  toggleDropdown?
                 <div className="element__bottom">
 
                     {
@@ -143,7 +147,9 @@ function App() {
                         </div>
                     ))}
                     
-                </div>
+                </div>:
+                <></>
+                }
             </div>
         </div>
 

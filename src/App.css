@@ -106,7 +106,6 @@
 .cross__all i{
   font-size: 20px;
   font-weight: 600;
-  color: rgb(230, 230, 230);
 }
 .cross__all i:hover{
   color: #9a9a9a;
@@ -127,7 +126,6 @@
 }
 .dropdown__arrow i{
   font-size: 32px;
-  color: rgb(230, 230, 230);
 }
 .dropdown__arrow i:hover{
   color: #9a9a9a;
@@ -135,25 +133,21 @@
 
 
 .element__bottom{
-  /* background-color: yellow; */
+  background-color: #fff;
+  position: absolute;
+  top: calc(100% + 10px);
   border-radius: 5px;
   max-height: 300px;
   overflow-x: auto;
-}
-
-.category{
-  /* background-color: pink; */
+  z-index: 5;
+  box-shadow: rgba(6, 6, 6, 0.05) 0px 2px 20px 8px;
 }
 
 .category__title{
-  /* background-color: violet; */
   padding: 5px 10px;
   margin: 0;
   font-size: 14px;
   color: rgb(230, 230, 230);
-}
-.roles{
-  /* background-color: red; */
 }
 
 .role{
