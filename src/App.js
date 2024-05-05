@@ -104,11 +104,11 @@ const techStack_list = ["Python","Java","GoLang","Ruby/Rails","C++","Kotlin","Dj
 
 
 function App() {
+    
   
-  //to toggle the dropdown menu
-  const [toggleDropdown,setToggleDropdown] = useState(0);
-  
-  //states to stor details of selected roles and category
+  //states to store details of selected roles and category
+  const [toggleRoleDropdown,setToggleRoleDropdown] = useState(0);
+
   const [selectedRoles,setSelectedRoles] = useState([]);
   const [selectedCategory,setSelectedCategory] = useState("");
 
@@ -127,12 +127,42 @@ function App() {
   const [searchRole, setSearchRole] = useState('');
 
   const handleRoleSearchChange = (event) => {
-    setToggleDropdown(1);
+    setToggleRoleDropdown(1);
     setSearchRole(event.target.value);
   };
   const filteredRoles = roles_list.flatMap(category => category.roles).filter(role => role.toLowerCase().includes(searchRole.toLowerCase()));
   const filteredRolesCategory = roles_list.filter(category => category.roles.some(role => filteredRoles.includes(role)));
-   
+
+
+
+  //states to store details of selected roles and category
+  const [toggleTechDropdown,setToggleTechDropdown] = useState(0);
+  const [selectedTech,setSelectedTech] = useState([]);
+  const [searchTech, setSearchTech] = useState('');
+
+
+  const handleTechSearchChange = (event) => {
+    setToggleTechDropdown(1);
+    setSearchTech(event.target.value);
+  };
+
+  const filteredTech = techStack_list.filter(ts => ts.toLowerCase().includes(searchTech.toLowerCase()));
+
+
+  //states to store details of work Mode
+  const [toggleModeDropdown,setToggleModeDropdown] = useState(0);
+  const [selectedMode,setSelectedMode] = useState([]);
+  const [searchMode, setSearchMode] = useState('');
+
+
+  const handleModeSearchChange = (event) => {
+    setToggleModeDropdown(1);
+    setSearchMode(event.target.value);
+  };
+
+  const filteredMode = workMode_list.filter(mode => mode.toLowerCase().includes(searchMode.toLowerCase()));
+
+  console.log(selectedMode);
 
 
   return (
@@ -140,7 +170,8 @@ function App() {
 
         <div className="filters">
 
-            {/* Filter for role */}
+
+            {/* Filter for Roles */}
             <div className="filter__element">
                 <p className="filter__title" style={{color:selectedRoles.length?'black':'#fff'}}>Roles</p>
                 <div className="element__top">
@@ -150,18 +181,18 @@ function App() {
                             return <SelectedTag  key={index} text={role} setSelected={setSelectedRoles} selected={selectedRoles}/>;
                           })
                         }
-                        <input type="text" className="search__box" placeholder={selectedRoles.length===0?"Roles":""} value={searchRole} onChange={handleRoleSearchChange} onClick={()=>setToggleDropdown(1)} />
+                        <input type="text" className="search__box" placeholder={selectedRoles.length===0?"Roles":""} value={searchRole} onChange={handleRoleSearchChange} onClick={()=>setToggleRoleDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
-                        <div className="cross__all" onClick={()=>{setToggleDropdown(0); setSelectedRoles([]);setSelectedCategory("");setSearchRole('');}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                        <div className="cross__all" onClick={()=>{setToggleRoleDropdown(0); setSelectedRoles([]);setSelectedCategory("");setSearchRole('');}} style={{color: toggleRoleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
                         <span className="partition"></span>
-                        <div className="dropdown__arrow" onClick={()=>{setToggleDropdown(!toggleDropdown)}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
+                        <div className="dropdown__arrow" onClick={()=>{setToggleRoleDropdown(!toggleRoleDropdown)}} style={{color: toggleRoleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
                     </div>                 
                 </div>
 
                 {
-                  toggleDropdown?
+                  toggleRoleDropdown?
                 <div className="element__bottom">
 
                     {
@@ -185,7 +216,7 @@ function App() {
                                     selectedRoles.includes(role) ? (
                                         <React.Fragment key={roleIndex} />
                                     ) : (
-                                        <div key={roleIndex} className="role" onClick={() => {addSelected(category.category, role); setToggleDropdown(0);}}>
+                                        <div key={roleIndex} className="role" onClick={() => {addSelected(category.category, role); setToggleRoleDropdown(0);}}>
                                             {role}
                                         </div>
                                         )
@@ -201,6 +232,107 @@ function App() {
                   
                 }
             </div>
+
+            
+
+            {/* Filter for tech stack */}
+            <div className="filter__element">
+                <p className="filter__title" style={{color:selectedTech.length?'black':'#fff'}}>Tech Stack</p>
+                <div className="element__top">
+                    <div className="element__top__left">
+                        {
+                          selectedTech.map((tech,index)=>{
+                            return <SelectedTag  key={index} text={tech} setSelected={setSelectedTech} selected={selectedTech}/>;
+                          })
+                        }
+                        <input type="text" className="search__box" placeholder={selectedTech.length===0?"Tech Stack":""} value={searchTech} onChange={handleTechSearchChange} onClick={()=>setToggleTechDropdown(1)} />
+                    </div>
+
+                    <div className="element__top__right">
+                        <div className="cross__all" onClick={()=>{setToggleTechDropdown(0); setSelectedTech([]);setSearchTech('');}} style={{color: toggleTechDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                        <span className="partition"></span>
+                        <div className="dropdown__arrow" onClick={()=>{setToggleTechDropdown(!toggleTechDropdown)}} style={{color: toggleTechDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
+                    </div>                 
+                </div>
+
+                {
+                  toggleTechDropdown?
+                <div className="element__bottom">
+
+                    {
+                      filteredTech.length === 0 ? (
+                        <div className="no-options">No options</div>
+                      ) : (
+                      filteredTech.map((tech, index) => (
+                        
+                            <div className="roles">
+                                {
+                                    selectedTech.includes(tech) ? (
+                                        <React.Fragment key={index} />
+                                    ) : (
+                                        <div key={index} className="role" onClick={() => {setSelectedTech([...selectedTech, tech]); setToggleTechDropdown(0);}}>
+                                            {tech}
+                                        </div>
+                                        )
+                                }
+                            </div>
+                    )))}
+                </div>:
+                <></>
+                  
+                }
+            </div>
+
+
+            {/* Filter for work mode */}
+            <div className="filter__element">
+                <p className="filter__title" style={{color:selectedMode.length?'black':'#fff'}}>Remote</p>
+                <div className="element__top">
+                    <div className="element__top__left">
+                        {
+                          selectedMode.map((mode,index)=>{
+                            return <SelectedTag  key={index} text={mode} setSelected={setSelectedMode} selected={selectedMode}/>;
+                          })
+                        }
+                        <input type="text" className="search__box" placeholder={selectedMode.length===0?"Remote":""} value={searchMode} onChange={handleModeSearchChange} onClick={()=>setToggleModeDropdown(1)} />
+                    </div>
+
+                    <div className="element__top__right">
+                        <div className="cross__all" onClick={()=>{setToggleModeDropdown(0); setSelectedMode([]);setSearchMode('');}} style={{color: toggleModeDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                        <span className="partition"></span>
+                        <div className="dropdown__arrow" onClick={()=>{setToggleModeDropdown(!toggleModeDropdown)}} style={{color: toggleModeDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
+                    </div>                 
+                </div>
+
+                {
+                  toggleModeDropdown?
+                <div className="element__bottom">
+
+                    {
+                      filteredMode.length === 0 ? (
+                        <div className="no-options">No options</div>
+                      ) : (
+                      filteredMode.map((mode, index) => (
+                        
+                            <div className="roles">
+                                {
+                                    selectedMode.includes(mode) ? (
+                                        <React.Fragment key={index} />
+                                    ) : (
+                                        <div key={index} className="role" onClick={() => {setSelectedMode([...selectedMode, mode]); setToggleModeDropdown(0);}}>
+                                            {mode}
+                                        </div>
+                                        )
+                                }
+                            </div>
+                    )))}
+                </div>:
+                <></>
+                  
+                }
+            </div>
+
+
         </div>
 
         {/* Section for Job Cards */}
