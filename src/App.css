@@ -17,7 +17,7 @@
 
 /* Filter Section styling starts here */
 .filters{
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   align-items: center;
   padding: 24px 60px;
@@ -87,8 +87,9 @@
   color: #de350b;
 }
 
+
+
 .element__top__right{
-     background-color: yellow;
      display: flex;
      align-items: center;
 }
@@ -133,6 +134,38 @@
 }
 
 
+.element__bottom{
+  /* background-color: yellow; */
+  border-radius: 5px;
+  max-height: 300px;
+  overflow-x: auto;
+}
+
+.category{
+  /* background-color: pink; */
+}
+
+.category__title{
+  /* background-color: violet; */
+  padding: 5px 10px;
+  margin: 0;
+  font-size: 14px;
+  color: rgb(230, 230, 230);
+}
+.roles{
+  /* background-color: red; */
+}
+
+.role{
+  padding: 10px 10px;
+  font-size: 16px;
+  font-weight: 250;
+}
+
+.role:hover{
+  background-color: #deebff;
+}
+
 /* JobSection styling starts here */
 .jobs{
     max-width: 100%;
@@ -141,7 +174,6 @@
     display:flex;
     flex-grow: 0;
     flex-flow: wrap;
-    /* justify-content: center; */
 }
 
 .jobcard__element{
