@@ -15,19 +15,91 @@
 }
 
 
+/* Filter Section styling starts here */
+.filters{
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  padding: 24px 60px;
+}
+
+.filter__element{
+     background-color: lightblue;
+     min-height: 38px;
+     min-width: 150px;
+     border: 1px solid rgb(204,204,204);
+     border-radius: 5px;
+     position: relative;
+     display: flex;
+     flex-direction: column;
+}
+
+.element__top{
+  background-color: lightgreen;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.element__top__left{
+  background-color: brown;
+  display: flex;
+  align-items: center;
+}
+
+.selected__tag{
+  display: flex;
+  align-items: center;
+}
+
+
+.element__top__right{
+     background-color: yellow;
+     display: flex;
+     align-items: center;
+}
+
+
+.cross__all{
+  background-color: violet;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.partition{
+  background-color: red;
+  width: 2px;
+  height: 10px;
+}
+
+.dropdown__arrow{
+  background-color: violet;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/* JobSection styling starts here */
 .jobs{
-    /* background-color: pink; */
     max-width: 100%;
     padding: 24px 60px;
     margin: 0px;
     display:flex;
     flex-grow: 0;
     flex-flow: wrap;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .jobcard__element{
-    /* background-color: yellow; */
     margin-top: 8px;
     padding: 24px;
 }
