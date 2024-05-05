@@ -465,11 +465,9 @@ function App() {
                             <SelectedTag  text={selectedPay} type={"single"} setSelected={setSelectedPay} selected={selectedPay}/>
                           ):
                           (
-                            <></>
+                            <input type="text" className="search__box" placeholder={selectedPay.length===0?"min base pay":""} value={searchPay} onChange={handlePaySearchChange} onClick={()=>setTogglePayDropdown(1)} />
                           )
                         }
-                        
-                        <input type="text" className="search__box" placeholder={selectedPay.length===0?"min base pay":""} value={searchPay} onChange={handlePaySearchChange} onClick={()=>setTogglePayDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
@@ -564,6 +562,13 @@ function App() {
                 <></>
                   
                 }
+            </div>
+
+
+
+            {/* Section to filter company Name */}
+            <div>
+               
             </div>
 
 

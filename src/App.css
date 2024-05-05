@@ -17,9 +17,12 @@
 
 /* Filter Section styling starts here */
 .filters{
+  background-color: aqua;
   display: flex;
   align-items: center;
-  padding: 24px 60px;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 24px 60px; 
 }
 
 .filter__element{
