@@ -98,10 +98,11 @@ const minBasePay_list = ["0L","10L","20L","30L","40L","50L","60L","70L"];
 
 const workMode_list = ["Remote","Hybrid","In-office"];
 
-const exp_list = [1,2,3,4,5,6,7,8,9,10];
+const exp_list = ["1","2","3","4","5","6","7","8","9","10"];
 
 const techStack_list = ["Python","Java","GoLang","Ruby/Rails","C++","Kotlin","Django","C#","GraphQL","Flask","Typescript","AWS","Javascript","Rust","NodeJS","React"];
 
+const location_list = ["Bangalore","Hyderabad","Noida","Gurugram","Pune","Mumbai","Delhi","Any"];
 
 function App() {
     
@@ -163,6 +164,22 @@ function App() {
   const filteredMode = workMode_list.filter(mode => mode.toLowerCase().includes(searchMode.toLowerCase()));
 
 
+
+    //states to store details of work Location
+    const [toggleLocDropdown,setToggleLocDropdown] = useState(0);
+    const [selectedLoc,setSelectedLoc] = useState([]);
+    const [searchLoc, setSearchLoc] = useState('');
+  
+  
+    const handleLocSearchChange = (event) => {
+      setToggleLocDropdown(1);
+      setSearchLoc(event.target.value);
+    };
+  
+    const filteredLoc = location_list.filter(loc => loc.toLowerCase().includes(searchLoc.toLowerCase()));
+
+
+
   //states to store details of Minimum base pay
   const [togglePayDropdown,setTogglePayDropdown] = useState(0);
   const [selectedPay,setSelectedPay] = useState("");
@@ -175,6 +192,20 @@ function App() {
   };
 
   const filteredPay = minBasePay_list.filter(pay => pay.toLowerCase().includes(searchMode.toLowerCase()));
+
+
+  //states to store details of Minimum base pay
+  const [toggleExpDropdown,setToggleExpDropdown] = useState(0);
+  const [selectedExp,setSelectedExp] = useState("");
+  const [searchExp, setSearchExp] = useState('');
+
+
+  const handleExpSearchChange = (event) => {
+    setToggleExpDropdown(1);
+    setSearchExp(event.target.value);
+  };
+
+  const filteredExp = exp_list.filter(exp => exp.toLowerCase().includes(searchExp.toLowerCase()));
 
   
   return (
@@ -235,7 +266,7 @@ function App() {
                                     selectedRoles.includes(role) ? (
                                         <React.Fragment key={roleIndex} />
                                     ) : (
-                                        <div key={roleIndex} className="role" onClick={() => {addSelected(category.category, role); setToggleRoleDropdown(0);}}>
+                                        <div key={roleIndex} className="role" onClick={() => {addSelected(category.category, role); setToggleRoleDropdown(0);setSearchRole('');}}>
                                             {role}
                                         </div>
                                         )
@@ -296,7 +327,7 @@ function App() {
                                     selectedTech.includes(tech) ? (
                                         <React.Fragment key={index} />
                                     ) : (
-                                        <div key={index} className="role" onClick={() => {setSelectedTech([...selectedTech, tech]); setToggleTechDropdown(0);}}>
+                                        <div key={index} className="role" onClick={() => {setSelectedTech([...selectedTech, tech]); setToggleTechDropdown(0);setSearchTech('');}}>
                                             {tech}
                                         </div>
                                         )
@@ -352,7 +383,7 @@ function App() {
                                     selectedMode.includes(mode) ? (
                                         <React.Fragment key={index} />
                                     ) : (
-                                        <div key={index} className="role" onClick={() => {setSelectedMode([...selectedMode, mode]); setToggleModeDropdown(0);}}>
+                                        <div key={index} className="role" onClick={() => {setSelectedMode([...selectedMode, mode]); setToggleModeDropdown(0);setSearchMode('');}}>
                                             {mode}
                                         </div>
                                         )
@@ -364,6 +395,64 @@ function App() {
                   
                 }
             </div>
+
+
+
+            {/* Filter for work Location */}
+            <div className="filter__element">
+                <p className="filter__title" style={{color:selectedLoc.length?'black':'#fff'}}>Location</p>
+                <div className="element__top">
+                    <div className="element__top__left">
+                        {
+                          selectedLoc.map((loc,index)=>{
+                            return <SelectedTag  key={index} type={"multi"} text={loc} setSelected={setSelectedLoc} selected={selectedLoc}/>;
+                          })
+                        }
+                        <input type="text" className="search__box" placeholder={selectedLoc.length===0?"Location":""} value={searchLoc} onChange={handleLocSearchChange} onClick={()=>setToggleLocDropdown(1)} />
+                    </div>
+
+                    <div className="element__top__right">
+                        {
+                          selectedLoc.length!==0?(
+                            <div className="cross__all" onClick={()=>{setToggleLocDropdown(0); setSelectedLoc([]);setSearchLoc('');}} style={{color: toggleLocDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                          ):
+                          (
+                            <></>
+                          )
+                        }
+                        <span className="partition"></span>
+                        <div className="dropdown__arrow" onClick={()=>{setToggleLocDropdown(!toggleLocDropdown)}} style={{color: toggleLocDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
+                    </div>                 
+                </div>
+
+                {
+                  toggleLocDropdown?
+                <div className="element__bottom">
+
+                    {
+                      filteredLoc.length === 0 ? (
+                        <div className="no-options">No options</div>
+                      ) : (
+                      filteredLoc.map((loc, index) => (
+                        
+                            <div className="roles">
+                                {
+                                    selectedLoc.includes(loc) ? (
+                                        <React.Fragment key={index} />
+                                    ) : (
+                                        <div key={index} className="role" onClick={() => {setSelectedLoc([...selectedLoc, loc]); setToggleLocDropdown(0);setSearchLoc('');}}>
+                                            {loc}
+                                        </div>
+                                        )
+                                }
+                            </div>
+                    )))}
+                </div>:
+                <></>
+                  
+                }
+            </div>
+
 
 
             {/* Filter for minimum base pay */}
@@ -409,7 +498,7 @@ function App() {
                         
                             <div className="roles">
                                 {
-                                    <div key={index} className="role" onClick={() => {setSelectedPay(pay); setTogglePayDropdown(0);}} style={{backgroundColor: pay===selectedPay?'blue':'auto'}}>
+                                    <div key={index} className="role" onClick={() => {setSelectedPay(pay); setTogglePayDropdown(0);setSearchPay('');}} style={{backgroundColor: pay===selectedPay?'blue':'auto'}}>
                                         {pay}
                                     </div>
                                 }
@@ -421,9 +510,61 @@ function App() {
                 }
             </div>
 
-
-
             
+            {/* Filter for minimum experience */}
+            <div className="filter__element">
+                <p className="filter__title" style={{color:selectedExp.length?'black':'#fff'}}>Experience</p>
+                <div className="element__top">
+                    <div className="element__top__left">
+                        {
+                          selectedExp!==""?(
+                            <SelectedTag  text={selectedExp} type={"single"} setSelected={setSelectedExp} selected={selectedExp}/>
+                          ):
+                          (
+                            <></>
+                          )
+                        }
+                        
+                        <input type="text" className="search__box" placeholder={selectedExp.length===0?"Experience":""} value={searchExp} onChange={handleExpSearchChange} onClick={()=>setToggleExpDropdown(1)} />
+                    </div>
+
+                    <div className="element__top__right">
+                        {
+                          selectedExp!==""?(
+                            <div className="cross__all" onClick={()=>{setToggleExpDropdown(0); setSelectedExp("");setSearchExp('');}} style={{color: toggleExpDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                          ):
+                          (
+                            <></>
+                          )
+                        }
+                        <span className="partition"></span>
+                        <div className="dropdown__arrow" onClick={()=>{setToggleExpDropdown(!toggleExpDropdown)}} style={{color: toggleExpDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
+                    </div>                 
+                </div>
+
+                {
+                  toggleExpDropdown?
+                <div className="element__bottom">
+
+                    {
+                      filteredExp.length === 0 ? (
+                        <div className="no-options">No options</div>
+                      ) : (
+                      filteredExp.map((exp, index) => (
+                        
+                            <div className="roles">
+                                {
+                                    <div key={index} className="role" onClick={() => {setSelectedExp(exp); setToggleExpDropdown(0);setSearchExp('');}} style={{backgroundColor: exp===selectedExp?'blue':'auto'}}>
+                                        {exp}
+                                    </div>
+                                }
+                            </div>
+                    )))}
+                </div>:
+                <></>
+                  
+                }
+            </div>
 
 
         </div>
