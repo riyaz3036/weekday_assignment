@@ -17,34 +17,33 @@
 
 /* Filter Section styling starts here */
 .filters{
-  /* background-color: pink; */
   display: flex;
   align-items: center;
   padding: 24px 60px;
 }
 
 .filter__element{
-     background-color: lightblue;
+     /* background-color: blue; */
      min-height: 38px;
      min-width: 150px;
-     border: 1px solid rgb(204,204,204);
-     border-radius: 5px;
      position: relative;
      display: flex;
      flex-direction: column;
 }
 
 .filter__title{
+  /* background-color: aqua; */
     font-size: 13px;
     margin-top: 6px;
     font-weight: 500;
 }
 
 .element__top{
-  background-color: lightgreen;
   display: flex;
   justify-content: space-between;
   align-items: center;  
+  border: 1px solid rgb(204,204,204);
+  border-radius: 5px;
 }
 
 .element__top__left{
@@ -57,36 +56,6 @@
   padding: 2px 8px;
   box-sizing: border-box;
 }
-
-.selected__tag{
-  background-color: rgb(230, 230, 230);
-  display: flex;
-  align-items: center;
-  margin: 2px;
-  border-radius: 2px;
-}
-
-.tag__text{
-  font-size: 12px;
-  margin: 0px 5px;
-}
-.tag__cross{
-  height: 20px;
-  width: 20px; 
-  border-radius: 2px;
-}
-.tag__cross:hover{
-  background-color: #ffbdad;
-}
-.tag__cross i{
-  margin: 2px;
-  font-weight: 600;
-}
-
-.tag__cross i:hover{
-  color: #de350b;
-}
-
 
 
 .element__top__right{

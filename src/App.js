@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import './App.css';
 import JobCard from './Components/JobCard/JobCard';
+import SelectedTag from './Components/SelectedTag/SelectedTag.js';
 
 
 const roles_list = [
@@ -104,7 +105,26 @@ const exp_list = [1,2,3,4,5,6,7,8,9,10];
 
 function App() {
   
+  //to toggle the dropdown menu
   const [toggleDropdown,setToggleDropdown] = useState(0);
+  
+  //states to stor details of selected roles and category
+  const [selectedRoles,setSelectedRoles] = useState([]);
+  const [selectedCategory,setSelectedCategory] = useState("");
+
+  const addSelected = (category,selected)=>{
+      if(category!==selectedCategory){
+          //clear selected array
+          setSelectedRoles([]);
+          setSelectedCategory(category);
+          setSelectedRoles([selected]); 
+      }
+      else{
+           setSelectedRoles([...selectedRoles, selected]); 
+      }
+  }
+  
+
 
   return (
     <div className="App">
@@ -116,15 +136,16 @@ function App() {
                 <p className="filter__title">Roles</p>
                 <div className="element__top">
                     <div className="element__top__left">
-                        <div className="selected__tag">
-                            <p className="tag__text">Selected</p>
-                            <div className="tag__cross"><i class="ri-close-line"></i></div>
-                        </div>
+                        {
+                          selectedRoles.map((role,index)=>{
+                            return <SelectedTag  key={index} text={role} setSelected={setSelectedRoles} selected={selectedRoles}/>;
+                          })
+                        }
                         <div className="search__box">Roles</div>
                     </div>
 
                     <div className="element__top__right">
-                        <div className="cross__all" onClick={()=>{setToggleDropdown(0)}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                        <div className="cross__all" onClick={()=>{setToggleDropdown(0); setSelectedRoles([]);setSelectedCategory("");}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
                         <span className="partition"></span>
                         <div className="dropdown__arrow" onClick={()=>{setToggleDropdown(!toggleDropdown)}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
                     </div>                 
@@ -137,12 +158,28 @@ function App() {
                     {
                     roles_list.map((category, index) => (
                         <div key={index} className="category">
-                            <p className="category__title">{category.category}</p>
+                            {
+                              (selectedCategory===category.category && selectedRoles.length===category.roles.length)?(
+                                <React.Fragment />
+                              )
+                              :(
+                                 <p className="category__title">{category.category}</p>
+                              )
+                            }
+                            
                             <div className="roles">
                                 {
                                 category.roles.map((role, roleIndex) => (
-                                    <div key={roleIndex} className="role">{role}</div>
-                                ))}
+                                    selectedRoles.includes(role) ? (
+                                        <React.Fragment key={roleIndex} />
+                                    ) : (
+                                        <div key={roleIndex} className="role" onClick={() => {addSelected(category.category, role); setToggleDropdown(0);}}>
+                                            {role}
+                                        </div>
+                                        )
+                                    ))
+                                }
+
                             </div>
                         </div>
                     ))}
@@ -153,6 +190,7 @@ function App() {
             </div>
         </div>
 
+        {/* Section for Job Cards */}
         <div className="jobs">
             <div className="jobcard__element"><JobCard /></div>
             <div className="jobcard__element"><JobCard /></div>

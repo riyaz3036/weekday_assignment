@@ -1,0 +1,28 @@
+.selected__tag{
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+    margin: 2px;
+    border-radius: 2px;
+  }
+  
+  .tag__text{
+    font-size: 12px;
+    margin: 0px 5px;
+  }
+  .tag__cross{
+    height: 20px;
+    width: 20px; 
+    border-radius: 2px;
+  }
+  .tag__cross:hover{
+    background-color: #ffbdad;
+  }
+  .tag__cross i{
+    margin: 2px;
+    font-weight: 600;
+  }
+  
+  .tag__cross i:hover{
+    color: #de350b;
+  }
