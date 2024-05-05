@@ -79,7 +79,67 @@
     color: rgb(77, 89, 106);
 }
 
+.company__info{
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
 
+.about__company__title,.about__role__title{
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+
+.about__us__title,.founder{
+    margin: 0;
+    white-space: pre-wrap;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.company__desc__cont{
+    margin: 0;
+    white-space: pre-wrap;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+
+.founder__link{
+    margin: 0;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.role__desc__cont{
+    margin: 0;
+    white-space: pre-wrap;
+    font-size: 14px;
+    z-index: 3;
+}
+
+.view__job{
+    background-color: #fff; 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: #fff 0px -10px 30px 24px;
+}
+
+.view__job p{
+    margin: 0;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #4943da;
+}
 
 
 /* Card Bottom Styling */

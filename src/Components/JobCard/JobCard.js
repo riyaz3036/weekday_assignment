@@ -33,15 +33,21 @@ return (
                 <p className="about__company__title">About Company:</p>
                 <div className="company_desc">
                     <p className="about__us__title"><strong>About us</strong></p>
-                    <p>
+                    <p className="company__desc__cont">
                     Flex Wash is an operating system for the car wash industry. Our solutions help owners manage their operations and grow revenue
                     Our POS has a built-in CRM, allowing car washes to take advantage of their customer transaction history in order to funnel customers
                     into subscriptions and higher margin wash packages.
                     </p>
-                    <p><strong>Founder/Recruiter profiles:</strong></p>
-                    <p><a href="https://www.linkedin.com/in/chirag-singh-toor-94713aa7/"><span>Chirag Singh Toor</span></a></p>
+                    <p className="founder"><strong>Founder/Recruiter profiles:</strong></p>
+                    <p className="founder__link">Chirag Singh Toor</p>
                 </div>
-                <p>View job</p>
+
+                <p className="about__role__title">About Role:</p>
+                <div>
+                    <p className="about__us__title"><strong>Overview</strong></p>
+                    <p className="role__desc__cont">Company Name: <strong>Narrative (yc w23)</strong> | HQ Location: San Fransisco | Website | linkedin</p>
+                </div>
+                <div className="view__job"><p>View job</p></div>
             </div>
             
             <div className="skills">
