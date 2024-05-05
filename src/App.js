@@ -94,13 +94,13 @@ const roles_list = [
   }
 ];
 
-const techStack_list = [];
-
 const minBasePay_list = [0,10,20,30,40,50,60,70];
 
 const workMode_list = ["Remote","Hybrid","In-office"];
 
 const exp_list = [1,2,3,4,5,6,7,8,9,10];
+
+const techStack_list = ["Python","Java","GoLang","Ruby/Rails","C++","Kotlin","Django","C#","GraphQL","Flask","Typescript","AWS","Javascript","Rust","NodeJS","React"];
 
 
 function App() {
@@ -123,7 +123,16 @@ function App() {
            setSelectedRoles([...selectedRoles, selected]); 
       }
   }
-  
+
+  const [searchRole, setSearchRole] = useState('');
+
+  const handleRoleSearchChange = (event) => {
+    setToggleDropdown(1);
+    setSearchRole(event.target.value);
+  };
+  const filteredRoles = roles_list.flatMap(category => category.roles).filter(role => role.toLowerCase().includes(searchRole.toLowerCase()));
+  const filteredRolesCategory = roles_list.filter(category => category.roles.some(role => filteredRoles.includes(role)));
+   
 
 
   return (
@@ -133,7 +142,7 @@ function App() {
 
             {/* Filter for role */}
             <div className="filter__element">
-                <p className="filter__title">Roles</p>
+                <p className="filter__title" style={{color:selectedRoles.length?'black':'#fff'}}>Roles</p>
                 <div className="element__top">
                     <div className="element__top__left">
                         {
@@ -141,11 +150,11 @@ function App() {
                             return <SelectedTag  key={index} text={role} setSelected={setSelectedRoles} selected={selectedRoles}/>;
                           })
                         }
-                        <div className="search__box">Roles</div>
+                        <input type="text" className="search__box" placeholder={selectedRoles.length===0?"Roles":""} value={searchRole} onChange={handleRoleSearchChange} onClick={()=>setToggleDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
-                        <div className="cross__all" onClick={()=>{setToggleDropdown(0); setSelectedRoles([]);setSelectedCategory("");}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                        <div className="cross__all" onClick={()=>{setToggleDropdown(0); setSelectedRoles([]);setSelectedCategory("");setSearchRole('');}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
                         <span className="partition"></span>
                         <div className="dropdown__arrow" onClick={()=>{setToggleDropdown(!toggleDropdown)}} style={{color: toggleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
                     </div>                 
@@ -156,7 +165,10 @@ function App() {
                 <div className="element__bottom">
 
                     {
-                    roles_list.map((category, index) => (
+                      filteredRolesCategory.length === 0 ? (
+                        <div className="no-options">No options</div>
+                      ) : (
+                    filteredRolesCategory.map((category, index) => (
                         <div key={index} className="category">
                             {
                               (selectedCategory===category.category && selectedRoles.length===category.roles.length)?(
@@ -169,7 +181,7 @@ function App() {
                             
                             <div className="roles">
                                 {
-                                category.roles.map((role, roleIndex) => (
+                                  category.roles.filter(role => filteredRoles.includes(role)).map((role, roleIndex) => (
                                     selectedRoles.includes(role) ? (
                                         <React.Fragment key={roleIndex} />
                                     ) : (
@@ -182,10 +194,11 @@ function App() {
 
                             </div>
                         </div>
-                    ))}
+                    )))}
                     
                 </div>:
-                <></>
+                <div></div>
+                  
                 }
             </div>
         </div>
