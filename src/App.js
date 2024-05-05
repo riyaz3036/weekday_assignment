@@ -94,7 +94,7 @@ const roles_list = [
   }
 ];
 
-const minBasePay_list = [0,10,20,30,40,50,60,70];
+const minBasePay_list = ["0L","10L","20L","30L","40L","50L","60L","70L"];
 
 const workMode_list = ["Remote","Hybrid","In-office"];
 
@@ -162,9 +162,21 @@ function App() {
 
   const filteredMode = workMode_list.filter(mode => mode.toLowerCase().includes(searchMode.toLowerCase()));
 
-  console.log(selectedMode);
+
+  //states to store details of Minimum base pay
+  const [togglePayDropdown,setTogglePayDropdown] = useState(0);
+  const [selectedPay,setSelectedPay] = useState("");
+  const [searchPay, setSearchPay] = useState('');
 
 
+  const handlePaySearchChange = (event) => {
+    setTogglePayDropdown(1);
+    setSearchPay(event.target.value);
+  };
+
+  const filteredPay = minBasePay_list.filter(pay => pay.toLowerCase().includes(searchMode.toLowerCase()));
+
+  
   return (
     <div className="App">
 
@@ -178,14 +190,21 @@ function App() {
                     <div className="element__top__left">
                         {
                           selectedRoles.map((role,index)=>{
-                            return <SelectedTag  key={index} text={role} setSelected={setSelectedRoles} selected={selectedRoles}/>;
+                            return <SelectedTag  key={index} type={"multi"} text={role} setSelected={setSelectedRoles} selected={selectedRoles}/>;
                           })
                         }
                         <input type="text" className="search__box" placeholder={selectedRoles.length===0?"Roles":""} value={searchRole} onChange={handleRoleSearchChange} onClick={()=>setToggleRoleDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
-                        <div className="cross__all" onClick={()=>{setToggleRoleDropdown(0); setSelectedRoles([]);setSelectedCategory("");setSearchRole('');}} style={{color: toggleRoleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                        {
+                          selectedRoles.length!==0?(
+                            <div className="cross__all" onClick={()=>{setToggleRoleDropdown(0); setSelectedRoles([]);setSelectedCategory("");setSearchRole('');}} style={{color: toggleRoleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                          ):
+                          (
+                            <></>
+                          )
+                        }
                         <span className="partition"></span>
                         <div className="dropdown__arrow" onClick={()=>{setToggleRoleDropdown(!toggleRoleDropdown)}} style={{color: toggleRoleDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
                     </div>                 
@@ -242,14 +261,21 @@ function App() {
                     <div className="element__top__left">
                         {
                           selectedTech.map((tech,index)=>{
-                            return <SelectedTag  key={index} text={tech} setSelected={setSelectedTech} selected={selectedTech}/>;
+                            return <SelectedTag  key={index} type={"multi"} text={tech} setSelected={setSelectedTech} selected={selectedTech}/>;
                           })
                         }
                         <input type="text" className="search__box" placeholder={selectedTech.length===0?"Tech Stack":""} value={searchTech} onChange={handleTechSearchChange} onClick={()=>setToggleTechDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
-                        <div className="cross__all" onClick={()=>{setToggleTechDropdown(0); setSelectedTech([]);setSearchTech('');}} style={{color: toggleTechDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                        {
+                          selectedTech.length!==0?(
+                            <div className="cross__all" onClick={()=>{setToggleTechDropdown(0); setSelectedTech([]);setSearchTech('');}} style={{color: toggleTechDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                          ):
+                          (
+                            <></>
+                          )
+                        }
                         <span className="partition"></span>
                         <div className="dropdown__arrow" onClick={()=>{setToggleTechDropdown(!toggleTechDropdown)}} style={{color: toggleTechDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
                     </div>                 
@@ -291,14 +317,21 @@ function App() {
                     <div className="element__top__left">
                         {
                           selectedMode.map((mode,index)=>{
-                            return <SelectedTag  key={index} text={mode} setSelected={setSelectedMode} selected={selectedMode}/>;
+                            return <SelectedTag  key={index} type={"multi"} text={mode} setSelected={setSelectedMode} selected={selectedMode}/>;
                           })
                         }
                         <input type="text" className="search__box" placeholder={selectedMode.length===0?"Remote":""} value={searchMode} onChange={handleModeSearchChange} onClick={()=>setToggleModeDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
-                        <div className="cross__all" onClick={()=>{setToggleModeDropdown(0); setSelectedMode([]);setSearchMode('');}} style={{color: toggleModeDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                        {
+                          selectedMode.length!==0?(
+                            <div className="cross__all" onClick={()=>{setToggleModeDropdown(0); setSelectedMode([]);setSearchMode('');}} style={{color: toggleModeDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                          ):
+                          (
+                            <></>
+                          )
+                        }
                         <span className="partition"></span>
                         <div className="dropdown__arrow" onClick={()=>{setToggleModeDropdown(!toggleModeDropdown)}} style={{color: toggleModeDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
                     </div>                 
@@ -331,6 +364,66 @@ function App() {
                   
                 }
             </div>
+
+
+            {/* Filter for minimum base pay */}
+            <div className="filter__element">
+                <p className="filter__title" style={{color:selectedPay.length?'black':'#fff'}}>Min base pay</p>
+                <div className="element__top">
+                    <div className="element__top__left">
+                        {
+                          selectedPay!==""?(
+                            <SelectedTag  text={selectedPay} type={"single"} setSelected={setSelectedPay} selected={selectedPay}/>
+                          ):
+                          (
+                            <></>
+                          )
+                        }
+                        
+                        <input type="text" className="search__box" placeholder={selectedPay.length===0?"min base pay":""} value={searchPay} onChange={handlePaySearchChange} onClick={()=>setTogglePayDropdown(1)} />
+                    </div>
+
+                    <div className="element__top__right">
+                        {
+                          selectedPay!==""?(
+                            <div className="cross__all" onClick={()=>{setTogglePayDropdown(0); setSelectedPay("");setSearchPay('');}} style={{color: togglePayDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
+                          ):
+                          (
+                            <></>
+                          )
+                        }
+                        <span className="partition"></span>
+                        <div className="dropdown__arrow" onClick={()=>{setTogglePayDropdown(!togglePayDropdown)}} style={{color: togglePayDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
+                    </div>                 
+                </div>
+
+                {
+                  togglePayDropdown?
+                <div className="element__bottom">
+
+                    {
+                      filteredPay.length === 0 ? (
+                        <div className="no-options">No options</div>
+                      ) : (
+                      filteredPay.map((pay, index) => (
+                        
+                            <div className="roles">
+                                {
+                                    <div key={index} className="role" onClick={() => {setSelectedPay(pay); setTogglePayDropdown(0);}} style={{backgroundColor: pay===selectedPay?'blue':'auto'}}>
+                                        {pay}
+                                    </div>
+                                }
+                            </div>
+                    )))}
+                </div>:
+                <></>
+                  
+                }
+            </div>
+
+
+
+            
 
 
         </div>
