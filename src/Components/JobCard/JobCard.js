@@ -51,15 +51,16 @@ return (
             </div>
             
             <div className="skills">
-                <h3>Skills</h3>
-                <div>
+                <h3 className="skills__title">Skills</h3>
+                <div className="skills__cont">
                     <p>Typescript</p>
                     <p>Founding Engineer</p>
                     <p>Senior Engineer</p>
                 </div>
-                <h3>Minimum Experience</h3>
+                <h3 className="min__exp">Minimum Experience</h3>
                 <h2>5 years</h2>
             </div>
+
         </div>
 
 

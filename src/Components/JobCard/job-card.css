@@ -142,6 +142,45 @@
 }
 
 
+.skills__title,.min__exp{
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+    margin-top: 10px;
+}
+
+.skills__cont{
+    margin: 0px;
+    flex: 1 1;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding-right: 15px;
+    justify-content: start;
+}
+
+.skills__cont p{
+    font-size: 9px;
+    font-weight: 500;
+    color: #4943da;
+    background-color: #d9fed3;
+    padding: 2px 7px;
+    border-radius: 50px;
+    margin: 2px 5px 2px 0px;
+}
+
+.skills h2{
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+
 /* Card Bottom Styling */
 .card__bottom{
     padding: 0 15px;
