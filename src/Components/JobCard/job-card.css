@@ -6,7 +6,11 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px;
     border-radius: 20px;
     padding: 5px;
+    transition: 0.3s;
+}
 
+.card__main:hover{
+     transform: scale(1.01);
 }
 
 .empty_space{
@@ -18,7 +22,6 @@
 
 /* Card top styling starts here */
 .card__top{
-    /* background-color: aquamarine; */
     display: flex;
     padding: 10px;
 }
@@ -33,78 +36,91 @@
 .card__top__cont p{
     margin: 0;
     line-height: 1.5;
-    font-size: 9px;
+    font-size: 10px;
+    font-weight: 200;
 }
 
 
 
 /* Card middle section styling */
+.card__middle{
+    padding: 8px 16px;
+}
+
 .card__title{
     display: flex;
     gap: 0.5rem;
 }
 
 .card__title img{
-    height: 2.5rem;
-    width: 25px;
+    height: 2.6rem;
+    width: 28px;
 }
 
 .info__container h3{
     margin:0;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 3px;
     color: #8b8b8b;
 }
 
+.info__container h3:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .info__container h2{
     margin:0;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.5;
+    font-weight: 250;
 }
 
 .card_sub_text{
     margin: 0;
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 350;
     margin-top: 5px;
 }
 
 .est__salary{
     line-height: 1.43;
-    font-size: 14px;
+    font-size: 15px;
     margin: 8px 0;
-    font-weight: 400;
+    font-weight: 300;
     color: rgb(77, 89, 106);
 }
 
 .company__info{
     position: relative;
-    height: 350px;
+    height: 400px; 
     overflow: hidden;
 }
 
 .about__company__title,.about__role__title{
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.5;
-    font-weight: 500;
+    font-weight: 350;
 }
 
 
 .about__us__title,.founder{
     margin: 0;
     white-space: pre-wrap;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .company__desc__cont{
     margin: 0;
     white-space: pre-wrap;
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 24px;
     margin-bottom: 18px;
+    font-weight: 250;
 }
 
 
@@ -112,6 +128,10 @@
     margin: 0;
     font-size: 14px;
     margin-bottom: 18px;
+    margin-top: 5px;
+    color: blue;
+    font-weight: 250;
+    cursor: pointer;
 }
 
 .role__desc__cont{
@@ -128,7 +148,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    box-shadow: #fff 0px -10px 30px 24px;
+    box-shadow: #fff 0px -8px 40px 26px;
 }
 
 .view__job p{
@@ -136,15 +156,15 @@
     margin-bottom: 0.5rem;
     cursor: pointer;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 300;
     color: #4943da;
 }
 
 
 .skills__title,.min__exp{
     margin: 0;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 3px;
@@ -163,8 +183,8 @@
 }
 
 .skills__cont p{
-    font-size: 9px;
-    font-weight: 500;
+    font-size: 10px;
+    font-weight: 400;
     color: #4943da;
     background-color: #d9fed3;
     padding: 2px 7px;
@@ -174,8 +194,8 @@
 
 .skills h2{
     margin: 0;
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 250;
+    font-size: 15px;
     line-height: 1.5;
 }
 
@@ -193,11 +213,34 @@
 .card__bottom__cont button{
     background-color: rgb(85, 239, 196);
     width: 100%;
-    padding: 8px 18px;
-    font-size: 20px ;
+    padding: 12px 18px;
+    font-size:18px;
+    font-weight: 350;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
+.card__bottom__askref{
+    padding: 0.5rem 0;
+}
+.card__bottom__askref button{
+    background-color: #3d32db;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 250;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    gap: 10px;
+}
 
+.card__bottom__askref button img{
+    height: 24px;
+    border-radius: 50%;
+}

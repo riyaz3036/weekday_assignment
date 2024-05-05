@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
+
 :root {
   --font-name: "Lexend", sans-serif;
   --font-color: color: rgba(0, 0, 0, 0.87);
@@ -13,3 +14,20 @@
   color: var(--font-color);
 }
 
+
+.jobs{
+    /* background-color: pink; */
+    max-width: 100%;
+    padding: 24px 60px;
+    margin: 0px;
+    display:flex;
+    flex-grow: 0;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+.jobcard__element{
+    /* background-color: yellow; */
+    margin-top: 8px;
+    padding: 24px;
+}

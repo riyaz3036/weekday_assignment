@@ -9,7 +9,13 @@ function App() {
         <div className="filters"></div>
 
         <div className="jobs">
-            <JobCard />
+            <div className="jobcard__element"><JobCard /></div>
+            <div className="jobcard__element"><JobCard /></div>
+            <div className="jobcard__element"><JobCard /></div>
+            <div className="jobcard__element"><JobCard /></div>
+            <div className="jobcard__element"><JobCard /></div>
+            <div className="jobcard__element"><JobCard /></div>
+            <div className="jobcard__element"><JobCard /></div>             
         </div>
 
     </div>
