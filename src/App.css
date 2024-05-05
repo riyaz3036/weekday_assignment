@@ -2,6 +2,7 @@
 
 :root {
   --font-name: "Lexend", sans-serif;
+  --font-color: color: rgba(0, 0, 0, 0.87);
 }
 
 * {
@@ -9,5 +10,6 @@
   padding: 0;
   box-sizing: border-box; 
   font-family: var(--font-name); 
+  color: var(--font-color);
 }
 

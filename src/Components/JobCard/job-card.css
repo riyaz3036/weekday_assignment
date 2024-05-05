@@ -9,8 +9,8 @@
 
 }
 
-.card__main span{
-    background-color: red;
+.empty_space{
+    /* background-color: red; */
     height: 8px;
     width: 100%;
 }
@@ -18,7 +18,7 @@
 
 /* Card top styling starts here */
 .card__top{
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     display: flex;
     padding: 10px;
 }
@@ -32,10 +32,55 @@
 
 .card__top__cont p{
     margin: 0;
-    color: rgba(0, 0, 0, 0.87);
     line-height: 1.5;
     font-size: 9px;
 }
+
+
+
+/* Card middle section styling */
+.card__title{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.card__title img{
+    height: 2.5rem;
+    width: 25px;
+}
+
+.info__container h3{
+    margin:0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+
+.info__container h2{
+    margin:0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.card_sub_text{
+    margin: 0;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.est__salary{
+    line-height: 1.43;
+    font-size: 14px;
+    margin: 8px 0;
+    font-weight: 400;
+    color: rgb(77, 89, 106);
+}
+
+
+
 
 /* Card Bottom Styling */
 .card__bottom{
@@ -55,3 +100,5 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+

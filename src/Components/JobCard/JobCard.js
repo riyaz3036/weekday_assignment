@@ -1,11 +1,12 @@
 import React from 'react';
 import './job-card.css';
+import company_logo from '../../assets/company_logo.jpg'
 
 
 const JobCard = () => {
 return (
     <div className="card__main">
-        <span></span>
+        <span className="empty_space"></span>
 
         <div className="card__top">
             <div className="card__top__cont">
@@ -16,8 +17,8 @@ return (
         <div className="card__middle">
 
             <div className="card__title">
-                <img />
-                <div>
+                <img src={company_logo} />
+                <div className="card__title__right">
                     <div className="info__container">
                         <h3>FlexWash Technologies</h3>
                         <h2>Senior Engineer</h2>
@@ -55,7 +56,7 @@ return (
             </div>
         </div>
 
-        
+
 
         <div className="card__bottom">
             <div className="card__bottom__cont">
