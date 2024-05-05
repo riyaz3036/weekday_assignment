@@ -34,24 +34,58 @@
      flex-direction: column;
 }
 
+.filter__title{
+    font-size: 13px;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
 .element__top{
   background-color: lightgreen;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;  
 }
 
 .element__top__left{
   background-color: brown;
   display: flex;
   align-items: center;
+  flex: 1 1 0%;
+  flex-wrap: wrap; 
+  overflow: hidden;
+  padding: 2px 8px;
+  box-sizing: border-box;
 }
 
 .selected__tag{
+  background-color: rgb(230, 230, 230);
   display: flex;
   align-items: center;
+  margin: 2px;
+  border-radius: 2px;
 }
 
+.tag__text{
+  font-size: 12px;
+  margin: 0px 5px;
+}
+.tag__cross{
+  height: 20px;
+  width: 20px; 
+  border-radius: 2px;
+}
+.tag__cross:hover{
+  background-color: #ffbdad;
+}
+.tag__cross i{
+  margin: 2px;
+  font-weight: 600;
+}
+
+.tag__cross i:hover{
+  color: #de350b;
+}
 
 .element__top__right{
      background-color: yellow;
@@ -61,7 +95,6 @@
 
 
 .cross__all{
-  background-color: violet;
   height: 36px;
   width: 36px;
   display: flex;
@@ -69,23 +102,35 @@
   align-items: center;
   
 }
+.cross__all i{
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(230, 230, 230);
+}
+.cross__all i:hover{
+  color: #9a9a9a;
+}
 
 .partition{
-  background-color: red;
-  width: 2px;
-  height: 10px;
+  background-color: rgb(230, 230, 230);
+  width: 1px;
+  height: 24px;
 }
 
 .dropdown__arrow{
-  background-color: violet;
   height: 36px;
   width: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
+.dropdown__arrow i{
+  font-size: 32px;
+  color: rgb(230, 230, 230);
+}
+.dropdown__arrow i:hover{
+  color: #9a9a9a;
+}
 
 
 /* JobSection styling starts here */
