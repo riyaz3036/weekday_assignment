@@ -7,7 +7,7 @@ import user2 from '../../assets/user2.jpg';
 
 
 
-const JobCard = ({selectedRoles,selectedTech,selectedMode,selectedLoc,selectedPay,selectedExp,searchName,job}) => {
+const JobCard = ({selectedRoles,selectedTech,selectedLoc,selectedPay,selectedExp,searchName,job}) => {
   
   //Tech Stack Not specified in the API...SO, Assuming some skills
   let techStack = [];
@@ -23,12 +23,11 @@ return (
     
        
        ( (!selectedRoles.length) || (selectedRoles.length && selectedRoles.some(role => role.toLowerCase() === job.jobRole.toLowerCase()))) &&
-       ( (!selectedTech.length) || (selectedTech.length && selectedTech.some(tech => techStack.includes(tech.toLowerCase())))) &&
-       ( (!selectedMode.length) || (selectedMode.length && (job.location==="remote" ^ selectedMode.some(mode => mode.toLowerCase() === "remote")))) &&
-       ( (!selectedLoc.length) || (selectedLoc.length && ((!selectedMode.length || !selectedMode.some(mode => mode.toLowerCase() === "remote")) && selectedLoc.some(loc => loc.toLowerCase() === job.location.toLowerCase())))) &&
+       ( (!selectedTech.length) || (selectedTech.length && selectedTech.some(tech => techStack.includes(tech)))) &&
+       ( (!selectedLoc.length) || (selectedLoc.length && (selectedLoc.some(loc => loc.toLowerCase() === job.location.toLowerCase())))) &&
        ( (!selectedPay.length) || (selectedPay.length && ((job.minJdSalary===null || parseInt(selectedPay) <= job.minJdSalary) && (job.maxJdSalary===null || parseInt(selectedPay) <= job.maxJdSalary)))) &&
        ( (!selectedExp.length) || (selectedExp.length && (!job.minExp || parseInt(selectedExp) >= job.minExp))) &&
-       (!searchName.length || (searchName.length && job.companyName.toLowerCase().includes(searchName.toLowerCase())))?
+       ( (!searchName.length) || (searchName.length && job.companyName.toLowerCase().includes(searchName.toLowerCase())))?
       
     
     <div className="card__main">

@@ -96,13 +96,11 @@ const roles_list = [
 
 const minBasePay_list = ["0USD","10USD","20USD","30USD","40USD","50USD","60USD","70USD","80USD","90USD","100USD"];
 
-const workMode_list = ["Remote","Hybrid","In-office"];
-
 const exp_list = ["0","1","2","3","4","5","6","7","8","9","10"];
 
 const techStack_list = ["Python","Java","GoLang","Ruby/Rails","C++","Kotlin","Django","C#","GraphQL","Flask","Typescript","AWS","Javascript","Rust","NodeJS","React"];
 
-const location_list = ["Bangalore","Hyderabad","Noida","Gurugram","Pune","Mumbai","Delhi","Any"];
+const location_list = ["Remote","Bangalore","Delhi NCR","Chennai","Mumbai","Hyderabad","Noida","Gurugram"];
 
 function App() {
 
@@ -116,7 +114,6 @@ function App() {
     myHeaders.append("Content-Type", "application/json");
 
     const body = JSON.stringify({
-      // "limit": 10,
       "offset": 0
     });
 
@@ -144,7 +141,7 @@ function App() {
   }, []);
   
 
-  console.log(jobData,apiError);
+  
   
   //states to store details of selected roles and category
   const [toggleRoleDropdown,setToggleRoleDropdown] = useState(0);
@@ -175,7 +172,7 @@ function App() {
 
 
 
-  //states to store details of selected roles and category
+  //states to store details of selected Tech Stack
   const [toggleTechDropdown,setToggleTechDropdown] = useState(0);
   const [selectedTech,setSelectedTech] = useState([]);
   const [searchTech, setSearchTech] = useState('');
@@ -187,20 +184,6 @@ function App() {
   };
 
   const filteredTech = techStack_list.filter(ts => ts.toLowerCase().includes(searchTech.toLowerCase()));
-
-
-  //states to store details of work Mode
-  const [toggleModeDropdown,setToggleModeDropdown] = useState(0);
-  const [selectedMode,setSelectedMode] = useState([]);
-  const [searchMode, setSearchMode] = useState('');
-
-
-  const handleModeSearchChange = (event) => {
-    setToggleModeDropdown(1);
-    setSearchMode(event.target.value);
-  };
-
-  const filteredMode = workMode_list.filter(mode => mode.toLowerCase().includes(searchMode.toLowerCase()));
 
 
 
@@ -230,10 +213,10 @@ function App() {
     setSearchPay(event.target.value);
   };
 
-  const filteredPay = minBasePay_list.filter(pay => pay.toLowerCase().includes(searchMode.toLowerCase()));
+  const filteredPay = minBasePay_list.filter(pay => pay.toLowerCase().includes(searchPay.toLowerCase()));
 
 
-  //states to store details of Minimum base pay
+  //states to store details of Experience
   const [toggleExpDropdown,setToggleExpDropdown] = useState(0);
   const [selectedExp,setSelectedExp] = useState("");
   const [searchExp, setSearchExp] = useState('');
@@ -379,62 +362,6 @@ console.log(parseInt(selectedExp));
                                     ) : (
                                         <div key={index} className="role" onClick={() => {setSelectedTech([...selectedTech, tech]); setToggleTechDropdown(0);setSearchTech('');}}>
                                             {tech}
-                                        </div>
-                                        )
-                                }
-                            </div>
-                    )))}
-                </div>:
-                <></>
-                  
-                }
-            </div>
-
-
-            {/* Filter for work mode */}
-            <div className="filter__element">
-                <p className="filter__title" style={{color:selectedMode.length?'black':'#fff'}}>Remote</p>
-                <div className="element__top">
-                    <div className="element__top__left">
-                        {
-                          selectedMode.map((mode,index)=>{
-                            return <SelectedTag  key={index} type={"multi"} text={mode} setSelected={setSelectedMode} selected={selectedMode}/>;
-                          })
-                        }
-                        <input type="text" className={selectedMode.length===0?"search__box":"search__box__short"} placeholder={selectedMode.length===0?"Remote":""} value={searchMode} onChange={handleModeSearchChange} onClick={()=>setToggleModeDropdown(1)} />
-                    </div>
-
-                    <div className="element__top__right">
-                        {
-                          selectedMode.length!==0?(
-                            <div className="cross__all" onClick={()=>{setToggleModeDropdown(0); setSelectedMode([]);setSearchMode('');}} style={{color: toggleModeDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-close-line"></i></div>
-                          ):
-                          (
-                            <></>
-                          )
-                        }
-                        <span className="partition"></span>
-                        <div className="dropdown__arrow" onClick={()=>{setToggleModeDropdown(!toggleModeDropdown)}} style={{color: toggleModeDropdown? "#9a9a9a":"rgb(230, 230, 230)"}}><i class="ri-arrow-drop-down-line"></i></div>
-                    </div>                 
-                </div>
-
-                {
-                  toggleModeDropdown?
-                <div className="element__bottom">
-
-                    {
-                      filteredMode.length === 0 ? (
-                        <div className="no-options">No options</div>
-                      ) : (
-                      filteredMode.map((mode, index) => (
-                        
-                            <div className="roles">
-                                {
-                                    selectedMode.includes(mode) ? (
-                                        <React.Fragment key={index} />
-                                    ) : (
-                                        <div key={index} className="role" onClick={() => {setSelectedMode([...selectedMode, mode]); setToggleModeDropdown(0);setSearchMode('');}}>
-                                            {mode}
                                         </div>
                                         )
                                 }
@@ -631,7 +558,6 @@ console.log(parseInt(selectedExp));
                   <JobCard 
                     selectedRoles={selectedRoles}
                     selectedTech={selectedTech}
-                    selectedMode={selectedMode}
                     selectedLoc={selectedLoc}
                     selectedPay={selectedPay}
                     selectedExp={selectedExp}
