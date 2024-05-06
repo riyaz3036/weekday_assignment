@@ -21,7 +21,7 @@ Visit the website to view the assignment: https://weekday-assignment-three.verce
 I would really appreciate getting some suggestions and corrections in my assignment
 
 ## Please watch this video for a very quick code tour!!
-<video src="readmeassets/quickCodeTour.mp4" width="500px" >
+https://github.com/riyaz3036/weekday_assignment/assets/114072996/e125422c-ceaf-4925-999f-dd62704431e2
 
 ### Main Page - Desktop
 
