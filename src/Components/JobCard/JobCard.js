@@ -20,6 +20,17 @@ const JobCard = ({selectedRoles,selectedTech,selectedMode,selectedLoc,selectedPa
 
 
 return (
+    
+       
+       ( (!selectedRoles.length) || (selectedRoles.length && selectedRoles.some(role => role.toLowerCase() === job.jobRole.toLowerCase()))) &&
+       ( (!selectedTech.length) || (selectedTech.length && selectedTech.some(tech => techStack.includes(tech.toLowerCase())))) &&
+       ( (!selectedMode.length) || (selectedMode.length && (job.location==="remote" ^ selectedMode.some(mode => mode.toLowerCase() === "remote")))) &&
+       ( (!selectedLoc.length) || (selectedLoc.length && ((!selectedMode.length || !selectedMode.some(mode => mode.toLowerCase() === "remote")) && selectedLoc.some(loc => loc.toLowerCase() === job.location.toLowerCase())))) &&
+       ( (!selectedPay.length) || (selectedPay.length && ((job.minJdSalary===null || parseInt(selectedPay) <= job.minJdSalary) && (job.maxJdSalary===null || parseInt(selectedPay) <= job.maxJdSalary)))) &&
+       ( (!selectedExp.length) || (selectedExp.length && (!job.minExp || parseInt(selectedExp) >= job.minExp))) &&
+       (!searchName.length || (searchName.length && job.companyName.toLowerCase().includes(searchName.toLowerCase())))?
+      
+    
     <div className="card__main">
         <span className="empty_space"></span>
 
@@ -134,6 +145,9 @@ return (
 
         </div>
     </div>
+     : null
+
+    
 )
 }
 

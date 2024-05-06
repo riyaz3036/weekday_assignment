@@ -94,11 +94,11 @@ const roles_list = [
   }
 ];
 
-const minBasePay_list = ["0L","10L","20L","30L","40L","50L","60L","70L"];
+const minBasePay_list = ["0USD","10USD","20USD","30USD","40USD","50USD","60USD","70USD","80USD","90USD","100USD"];
 
 const workMode_list = ["Remote","Hybrid","In-office"];
 
-const exp_list = ["1","2","3","4","5","6","7","8","9","10"];
+const exp_list = ["0","1","2","3","4","5","6","7","8","9","10"];
 
 const techStack_list = ["Python","Java","GoLang","Ruby/Rails","C++","Kotlin","Django","C#","GraphQL","Flask","Typescript","AWS","Javascript","Rust","NodeJS","React"];
 
@@ -256,7 +256,7 @@ function App() {
   };
   
 
-
+console.log(parseInt(selectedExp));
   
   return (
     <div className="App">
