@@ -26,3 +26,16 @@
   .tag__cross i:hover{
     color: #de350b;
   }
+  
+
+  @media (max-width: 600px){
+    
+    .tag__text{
+      font-size: 10px;
+    }
+    .tag__cross{
+      height: 18px;
+      width: 18px; 
+    }
+   
+  }

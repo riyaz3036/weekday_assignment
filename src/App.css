@@ -186,3 +186,63 @@
     flex-flow: wrap;
 }
 
+
+@media (max-width: 600px){
+
+    /* Responsive Filter Section styling starts here */
+.filters{
+  padding: 20px;
+}
+
+.filter__element{
+     min-height: 32px;
+     min-width: 130px;
+}
+
+.filter__title{
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.search__box{
+  width: 80px; 
+}
+
+
+.cross__all{
+  height: 32px;
+  width: 32px;  
+}
+.cross__all i{
+  font-size: 18px;
+}
+
+.dropdown__arrow{
+  height: 32px;
+  width: 32px;
+}
+.dropdown__arrow i{
+  font-size: 30px;
+}
+
+
+.category__title{
+  font-size: 12px;
+}
+
+.role{
+  font-size: 14px;
+}
+
+
+.company__name__input{
+     min-height: 32px;
+}
+
+
+/* Responsive JobSection styling starts here */
+.jobs{
+    padding: 20px;
+}
+
+}

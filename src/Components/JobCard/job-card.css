@@ -245,3 +245,143 @@
     height: 24px;
     border-radius: 50%;
 }
+
+
+
+
+
+/* Responsive design styling */
+
+@media (max-width: 600px){
+
+
+    .card__main{
+        border-radius: 16px;
+        padding: 4px;
+        margin: 16px;
+    }
+    
+    
+    .empty_space{ 
+        height: 8px;
+    }
+    
+    
+    
+    /* Responsive Card top styling starts here */
+    .card__top{
+        padding: 8px;
+    }
+    
+    .card__top__cont p{
+        font-size: 8px;
+    }
+    
+    
+    
+    /*Responsive Card middle section styling */
+    .card__middle{
+        padding: 8px 14px;
+    }
+    
+    
+    .info__container h3{
+        font-size: 12px;
+    }
+    
+    .info__container h2{
+        font-size: 13px;
+    }
+    
+    .card_sub_text{
+        font-size: 10px;
+    }
+    
+    .est__salary{
+        font-size: 13px;
+    }
+    
+    .company__info{
+        height: 270px; 
+    }
+    
+    .about__company__title,.about__role__title{
+        font-size: 1rem;
+    }
+    
+    
+    .about__us__title,.founder{
+        font-size: 13px;
+    }
+    
+    .company__desc__cont{
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 16px;
+    }
+    
+    
+    .founder__link{
+        font-size: 12px;
+        margin-bottom: 16px;
+    }
+    
+    .role__desc__cont{
+        font-size: 12px;
+    }
+    
+    
+    .view__job p{
+        font-size: 13px;
+    }
+    
+    
+    .skills__title,.min__exp{
+        font-size: 12px;
+        margin-top: 8px;
+    }
+    
+    .skills__cont{
+        padding-right: 13px;
+    }
+    
+    .skills__cont p{
+        font-size: 8px;
+    }
+    
+    .skills h2{
+        font-size: 13px;
+    }
+    
+    
+    
+    /* Responsive Card Bottom Styling */
+    .card__bottom{
+        padding: 0 10px;
+    }
+    
+    .card__bottom__cont{
+        padding: 0.3rem 0;
+    }
+    
+    .card__bottom__cont button{
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+    
+    .card__bottom__askref{
+        padding: 0.3rem 0;
+    }
+    .card__bottom__askref button{
+        padding: 10px 16px;
+        font-size: 12px;
+        gap: 8px;
+    }
+    
+    .card__bottom__askref button img{
+        height: 20px;
+    }
+    
+
+
+}
