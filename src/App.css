@@ -3,7 +3,7 @@
 
 :root {
   --font-name: "Lexend", sans-serif;
-  --font-color: color: rgba(0, 0, 0, 0.87);
+  --font-color:  rgba(0, 0, 0, 0.87);
 }
 
 * {
