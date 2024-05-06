@@ -18,7 +18,10 @@
 
 Visit the website to view the assignment: https://weekday-assignment-three.vercel.app/
 
-I would really appreciate to get some suggestions and corrections in my assignment
+I would really appreciate getting some suggestions and corrections in my assignment
+
+## Please watch this video for a very quick code tour!!
+<video src="readmeassets/quickCodeTour.mp4" width="500px" >
 
 ### Main Page - Desktop
 
