@@ -1,42 +1,95 @@
 import React from 'react';
 import './job-card.css';
-import company_logo from '../../assets/company_logo.jpg'
+import user1 from '../../assets/user1.jpg';
+import user2 from '../../assets/user2.jpg';
 
 
-const JobCard = () => {
+
+
+
+const JobCard = ({selectedRoles,selectedTech,selectedMode,selectedLoc,selectedPay,selectedExp,searchName,job}) => {
+  
+  //Tech Stack Not specified in the API...SO, Assuming some skills
+  let techStack = [];
+
+  if(job.jobRole==="frontend") techStack = ["Typescript","Javascript","NodeJS","React"];
+  else if(job.jobRole==="ios") techStack = ["C#","AWS","Javascript","Rust"];
+  else if(job.jobRole==="android") techStack = ["Java","Kotlin"];
+  else if(job.jobRole==="tech lead") techStack = ["Python","Typescript","AWS","NodeJS","React"];
+  else if(job.jobRole==="backend") techStack = ["C++","Django","Flask","AWS","NodeJS"];
+
+
 return (
     <div className="card__main">
         <span className="empty_space"></span>
 
         <div className="card__top">
             <div className="card__top__cont">
-                <p>⏳ Posted 5 days ago</p>
+                <p>⏳ Posted {Math.floor(Math.random() * 10) + 1} days ago</p>
             </div>
         </div>
 
         <div className="card__middle">
 
             <div className="card__title">
-                <img src={company_logo} />
+                <img src={job.logoUrl} />
                 <div className="card__title__right">
                     <div className="info__container">
-                        <h3>FlexWash Technologies</h3>
-                        <h2>Senior Engineer</h2>
+                        <h3>{job.companyName}</h3>
+                        <h2>{job.jobRole.charAt(0).toUpperCase() + job.jobRole.slice(1)}</h2>
                     </div>
-                    <p class="card_sub_text">India | Exp: 5-5 years</p>
+
+                    {
+                        !job.minExp && job.maxExp &&(
+                            <p class="card_sub_text">{job.location.charAt(0).toUpperCase() + job.location.slice(1)} | Exp: Upto {job.minExp} years</p>
+                        )
+                    }
+                    { 
+                        job.minExp && !job.maxExp &&(
+                            <p class="card_sub_text">{job.location.charAt(0).toUpperCase() + job.location.slice(1)} | Exp: Atleast {job.minExp} years</p>
+                        )
+                    }
+                    {
+                        !job.minExp && !job.maxExp && (
+                            <p class="card_sub_text">{job.location.charAt(0).toUpperCase() + job.location.slice(1)} </p>
+                        )
+                    }
+                    {
+                        job.minExp && job.maxExp &&(
+                            <p class="card_sub_text">{job.location.charAt(0).toUpperCase() + job.location.slice(1)} {job.minExp && job.maxExp?`| Exp: ${job.minExp}-${job.maxExp} years`:""}</p>
+                        )
+                    }
+    
                 </div>
             </div>
-
-            <p className="est__salary">Estimated Salary: ₹30 - 60 LPA<span>✅</span></p>
+            {
+                !job.minJdSalary && job.maxJdSalary &&(
+                    <p className="est__salary">Estimated Salary: Upto {job.salaryCurrencyCode==="USD"?"$":"₹"}{job.maxJdSalary} {job.salaryCurrencyCode} PA<span>✅</span></p>
+                )
+            }
+            { 
+                job.minJdSalary && !job.maxJdSalary &&(
+                    <p className="est__salary">Estimated Salary: Atleast {job.salaryCurrencyCode==="USD"?"$":"₹"}{job.minJdSalary} {job.salaryCurrencyCode} PA<span>✅</span></p>
+                )
+            }
+            {
+                !job.minJdSalary && !job.maxJdSalary && (
+                    <p className="est__salary">Estimated Salary: Not Specified</p>
+                )
+            }
+            {
+                job.minJdSalary && job.maxJdSalary &&(
+                    <p className="est__salary">Estimated Salary: {job.salaryCurrencyCode==="USD"?"$":"₹"}{job.minJdSalary} - {job.maxJdSalary} {job.salaryCurrencyCode} PA<span>✅</span></p>
+                )
+            }
+            
 
             <div className="company__info">
                 <p className="about__company__title">About Company:</p>
                 <div className="company_desc">
                     <p className="about__us__title">About us</p>
                     <p className="company__desc__cont">
-                    Flex Wash is an operating system for the car wash industry. Our solutions help owners manage their operations and grow revenue
-                    Our POS has a built-in CRM, allowing car washes to take advantage of their customer transaction history in order to funnel customers
-                    into subscriptions and higher margin wash packages.
+                    {job.jobDetailsFromCompany}
                     </p>
                     <p className="founder">Founder/Recruiter profiles:</p>
                     <p className="founder__link">Chirag Singh Toor</p>
@@ -53,12 +106,14 @@ return (
             <div className="skills">
                 <h3 className="skills__title">Skills</h3>
                 <div className="skills__cont">
-                    <p>Typescript</p>
-                    <p>Founding Engineer</p>
-                    <p>Senior Engineer</p>
+                    {
+                        techStack.map((skill,index)=>(
+                            <p key={index}>{skill}</p>
+                        ))
+                    }
                 </div>
                 <h3 className="min__exp">Minimum Experience</h3>
-                <h2>5 years</h2>
+                <h2>{job.minExp?`${job.minExp} years`:"Not Specified"}</h2>
             </div>
 
         </div>
@@ -71,8 +126,8 @@ return (
             </div>
             <div className="card__bottom__askref">
                 <button>
-                    <img src={company_logo}/>
-                    <img src={company_logo}/>
+                    <img src={user1}/>
+                    <img src={user2}/>
                     Unblock referral asks
                 </button>
             </div>

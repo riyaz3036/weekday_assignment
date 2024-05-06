@@ -625,72 +625,23 @@ function App() {
 
         {/* Section for Job Cards */}
         <div className="jobs">
-            <div className="jobcard__element">
-                <JobCard 
-                   selectedRoles={selectedRoles}
-                   selectedTech={selectedTech}
-                   selectedMode={selectedMode}
-                   selectedLoc={selectedLoc}
-                   selectedPay={selectedPay}
-                   selectedExp={selectedExp}
-                   searchName={searchName}
-                />
-            </div>
-            <div className="jobcard__element">
-                <JobCard 
-                   selectedRoles={selectedRoles}
-                   selectedTech={selectedTech}
-                   selectedMode={selectedMode}
-                   selectedLoc={selectedLoc}
-                   selectedPay={selectedPay}
-                   selectedExp={selectedExp}
-                   searchName={searchName}
-                />
-            </div>
-            <div className="jobcard__element">
-                <JobCard 
-                   selectedRoles={selectedRoles}
-                   selectedTech={selectedTech}
-                   selectedMode={selectedMode}
-                   selectedLoc={selectedLoc}
-                   selectedPay={selectedPay}
-                   selectedExp={selectedExp}
-                   searchName={searchName}
-                />
-            </div>
-            <div className="jobcard__element">
-                <JobCard 
-                   selectedRoles={selectedRoles}
-                   selectedTech={selectedTech}
-                   selectedMode={selectedMode}
-                   selectedLoc={selectedLoc}
-                   selectedPay={selectedPay}
-                   selectedExp={selectedExp}
-                   searchName={searchName}
-                />
-            </div>
-            <div className="jobcard__element">
-                <JobCard 
-                   selectedRoles={selectedRoles}
-                   selectedTech={selectedTech}
-                   selectedMode={selectedMode}
-                   selectedLoc={selectedLoc}
-                   selectedPay={selectedPay}
-                   selectedExp={selectedExp}
-                   searchName={searchName}
-                />
-            </div>
-            <div className="jobcard__element">
-                <JobCard 
-                   selectedRoles={selectedRoles}
-                   selectedTech={selectedTech}
-                   selectedMode={selectedMode}
-                   selectedLoc={selectedLoc}
-                   selectedPay={selectedPay}
-                   selectedExp={selectedExp}
-                   searchName={searchName}
-                />
-            </div>             
+            {
+              jobData?.jdList.map((job,index)=>(
+                <div className="jobcard__element" key={job.jdUid}>
+                  <JobCard 
+                    selectedRoles={selectedRoles}
+                    selectedTech={selectedTech}
+                    selectedMode={selectedMode}
+                    selectedLoc={selectedLoc}
+                    selectedPay={selectedPay}
+                    selectedExp={selectedExp}
+                    searchName={searchName}
+                    job={job}
+                  />
+                </div>
+
+              ))
+            }          
         </div>
 
     </div>
