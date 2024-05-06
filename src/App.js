@@ -235,7 +235,7 @@ function App() {
                             return <SelectedTag  key={index} type={"multi"} text={role} setSelected={setSelectedRoles} selected={selectedRoles}/>;
                           })
                         }
-                        <input type="text" className="search__box" placeholder={selectedRoles.length===0?"Roles":""} value={searchRole} onChange={handleRoleSearchChange} onClick={()=>setToggleRoleDropdown(1)} />
+                        <input type="text" className={selectedRoles.length===0?"search__box":"search__box__short"} placeholder={selectedRoles.length===0?"Roles":""} value={searchRole} onChange={handleRoleSearchChange} onClick={()=>setToggleRoleDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
@@ -306,7 +306,7 @@ function App() {
                             return <SelectedTag  key={index} type={"multi"} text={tech} setSelected={setSelectedTech} selected={selectedTech}/>;
                           })
                         }
-                        <input type="text" className="search__box" placeholder={selectedTech.length===0?"Tech Stack":""} value={searchTech} onChange={handleTechSearchChange} onClick={()=>setToggleTechDropdown(1)} />
+                        <input type="text"className={selectedTech.length===0?"search__box":"search__box__short"} placeholder={selectedTech.length===0?"Tech Stack":""} value={searchTech} onChange={handleTechSearchChange} onClick={()=>setToggleTechDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
@@ -362,7 +362,7 @@ function App() {
                             return <SelectedTag  key={index} type={"multi"} text={mode} setSelected={setSelectedMode} selected={selectedMode}/>;
                           })
                         }
-                        <input type="text" className="search__box" placeholder={selectedMode.length===0?"Remote":""} value={searchMode} onChange={handleModeSearchChange} onClick={()=>setToggleModeDropdown(1)} />
+                        <input type="text" className={selectedMode.length===0?"search__box":"search__box__short"} placeholder={selectedMode.length===0?"Remote":""} value={searchMode} onChange={handleModeSearchChange} onClick={()=>setToggleModeDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
@@ -419,7 +419,7 @@ function App() {
                             return <SelectedTag  key={index} type={"multi"} text={loc} setSelected={setSelectedLoc} selected={selectedLoc}/>;
                           })
                         }
-                        <input type="text" className="search__box" placeholder={selectedLoc.length===0?"Location":""} value={searchLoc} onChange={handleLocSearchChange} onClick={()=>setToggleLocDropdown(1)} />
+                        <input type="text" className={selectedLoc.length===0?"search__box":"search__box__short"} placeholder={selectedLoc.length===0?"Location":""} value={searchLoc} onChange={handleLocSearchChange} onClick={()=>setToggleLocDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
@@ -530,11 +530,9 @@ function App() {
                             <SelectedTag  text={selectedExp} type={"single"} setSelected={setSelectedExp} selected={selectedExp}/>
                           ):
                           (
-                            <></>
+                            <input type="text" className="search__box" placeholder={selectedExp.length===0?"Experience":""} value={searchExp} onChange={handleExpSearchChange} onClick={()=>setToggleExpDropdown(1)} />
                           )
                         }
-                        
-                        <input type="text" className="search__box" placeholder={selectedExp.length===0?"Experience":""} value={searchExp} onChange={handleExpSearchChange} onClick={()=>setToggleExpDropdown(1)} />
                     </div>
 
                     <div className="element__top__right">
