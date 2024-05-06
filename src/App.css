@@ -17,7 +17,7 @@
 
 /* Filter Section styling starts here */
 .filters{
-  background-color: aqua;
+  /* background-color: aqua; */
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -66,6 +66,7 @@
   font-size: inherit;
   font-family: inherit; 
   color: inherit;
+  font-weight: 300;
 }
 
 
@@ -149,6 +150,19 @@
 
 .role:hover{
   background-color: #deebff;
+}
+
+
+.company__name__input{
+     min-height: 38px;
+     border: 1px solid rgb(204,204,204);
+     border-radius: 5px; 
+     outline: none;
+     padding: 4px; 
+     font-size: inherit;
+     font-family: inherit; 
+     color: inherit;
+     font-weight: 300;
 }
 
 

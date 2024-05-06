@@ -207,6 +207,17 @@ function App() {
 
   const filteredExp = exp_list.filter(exp => exp.toLowerCase().includes(searchExp.toLowerCase()));
 
+
+
+  //States for storing searched company name
+  const [searchName, setSearchName] = useState('');
+
+  const handleNameSearchChange = (event) => {
+    setSearchName(event.target.value);
+  };
+  
+
+
   
   return (
     <div className="App">
@@ -568,7 +579,8 @@ function App() {
 
             {/* Section to filter company Name */}
             <div>
-               
+                <p className="filter__title" style={{color:searchName.length?'black':'#fff'}}>Company name</p>
+                <input type="text" className="company__name__input" placeholder="Search Company Name" value={searchName} onChange={handleNameSearchChange} />
             </div>
 
 
