@@ -17,21 +17,19 @@
 
 /* Filter Section styling starts here */
 .filters{
-  /* background-color: aqua; */
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 24px 60px; 
+  padding: 24px;
 }
 
 .filter__element{
-     /* background-color: blue; */
      min-height: 38px;
      min-width: 150px;
      position: relative;
      display: flex;
      flex-direction: column;
+     margin-right: 10px;
 }
 
 .filter__title{
@@ -181,14 +179,10 @@
 /* JobSection styling starts here */
 .jobs{
     max-width: 100%;
-    padding: 24px 60px;
-    margin: 0px;
+    padding: 24px;
+    margin: 0;
     display:flex;
     flex-grow: 0;
     flex-flow: wrap;
 }
 
-.jobcard__element{
-    margin-top: 8px;
-    padding: 24px;
-}
