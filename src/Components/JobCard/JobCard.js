@@ -19,6 +19,8 @@ const JobCard = ({selectedRoles,selectedTech,selectedLoc,selectedPay,selectedExp
   else if(job.jobRole==="backend") techStack = ["C++","Django","Flask","AWS","NodeJS"];
 
 
+
+
 return (
     
        
@@ -29,8 +31,10 @@ return (
        ( (!selectedExp.length) || (selectedExp.length && (!job.minExp || parseInt(selectedExp) >= job.minExp))) &&
        ( (!searchName.length) || (searchName.length && job.companyName.toLowerCase().includes(searchName.toLowerCase())))?
       
+       
     
     <div className="card__main">
+
         <span className="empty_space"></span>
 
         <div className="card__top">

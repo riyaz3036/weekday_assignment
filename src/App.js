@@ -237,9 +237,9 @@ function App() {
   const handleNameSearchChange = (event) => {
     setSearchName(event.target.value);
   };
-  
 
-console.log(parseInt(selectedExp));
+
+
   
   return (
     <div className="App">
@@ -554,6 +554,7 @@ console.log(parseInt(selectedExp));
         <div className="jobs">
             {
               jobData?.jdList.map((job,index)=>(
+
                 <div className="jobcard__element" key={job.jdUid}>
                   <JobCard 
                     selectedRoles={selectedRoles}
