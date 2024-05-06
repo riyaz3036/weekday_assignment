@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import './App.css';
 import JobCard from './Components/JobCard/JobCard';
 import SelectedTag from './Components/SelectedTag/SelectedTag.js';
@@ -105,7 +105,46 @@ const techStack_list = ["Python","Java","GoLang","Ruby/Rails","C++","Kotlin","Dj
 const location_list = ["Bangalore","Hyderabad","Noida","Gurugram","Pune","Mumbai","Delhi","Any"];
 
 function App() {
-    
+
+  //API CALL TO RETRIEVE ALL THE JOB DATA
+  const [jobData, setJobData] = useState(null);
+  const [apiError, setApiError] = useState(null);
+
+
+  const fetchData = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const body = JSON.stringify({
+      // "limit": 10,
+      "offset": 0
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body
+    };
+
+    try {
+      const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const result = await response.json();
+      setJobData(result);
+    } catch (error) {
+      setApiError(error.message);
+    }
+
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
+
+  console.log(jobData,apiError);
   
   //states to store details of selected roles and category
   const [toggleRoleDropdown,setToggleRoleDropdown] = useState(0);
@@ -586,13 +625,72 @@ function App() {
 
         {/* Section for Job Cards */}
         <div className="jobs">
-            <div className="jobcard__element"><JobCard /></div>
-            <div className="jobcard__element"><JobCard /></div>
-            <div className="jobcard__element"><JobCard /></div>
-            <div className="jobcard__element"><JobCard /></div>
-            <div className="jobcard__element"><JobCard /></div>
-            <div className="jobcard__element"><JobCard /></div>
-            <div className="jobcard__element"><JobCard /></div>             
+            <div className="jobcard__element">
+                <JobCard 
+                   selectedRoles={selectedRoles}
+                   selectedTech={selectedTech}
+                   selectedMode={selectedMode}
+                   selectedLoc={selectedLoc}
+                   selectedPay={selectedPay}
+                   selectedExp={selectedExp}
+                   searchName={searchName}
+                />
+            </div>
+            <div className="jobcard__element">
+                <JobCard 
+                   selectedRoles={selectedRoles}
+                   selectedTech={selectedTech}
+                   selectedMode={selectedMode}
+                   selectedLoc={selectedLoc}
+                   selectedPay={selectedPay}
+                   selectedExp={selectedExp}
+                   searchName={searchName}
+                />
+            </div>
+            <div className="jobcard__element">
+                <JobCard 
+                   selectedRoles={selectedRoles}
+                   selectedTech={selectedTech}
+                   selectedMode={selectedMode}
+                   selectedLoc={selectedLoc}
+                   selectedPay={selectedPay}
+                   selectedExp={selectedExp}
+                   searchName={searchName}
+                />
+            </div>
+            <div className="jobcard__element">
+                <JobCard 
+                   selectedRoles={selectedRoles}
+                   selectedTech={selectedTech}
+                   selectedMode={selectedMode}
+                   selectedLoc={selectedLoc}
+                   selectedPay={selectedPay}
+                   selectedExp={selectedExp}
+                   searchName={searchName}
+                />
+            </div>
+            <div className="jobcard__element">
+                <JobCard 
+                   selectedRoles={selectedRoles}
+                   selectedTech={selectedTech}
+                   selectedMode={selectedMode}
+                   selectedLoc={selectedLoc}
+                   selectedPay={selectedPay}
+                   selectedExp={selectedExp}
+                   searchName={searchName}
+                />
+            </div>
+            <div className="jobcard__element">
+                <JobCard 
+                   selectedRoles={selectedRoles}
+                   selectedTech={selectedTech}
+                   selectedMode={selectedMode}
+                   selectedLoc={selectedLoc}
+                   selectedPay={selectedPay}
+                   selectedExp={selectedExp}
+                   searchName={searchName}
+                />
+            </div>             
         </div>
 
     </div>
