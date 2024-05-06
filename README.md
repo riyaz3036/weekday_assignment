@@ -16,7 +16,9 @@
 
 ## Dont want to run the assignment in local environment? I got you!!
 
-Visit the website to view the assignment: 
+Visit the website to view the assignment: https://weekday-assignment-three.vercel.app/
+
+I would really appreciate to get some suggestions and corrections in my assignment
 
 ### Main Page - Desktop
 
